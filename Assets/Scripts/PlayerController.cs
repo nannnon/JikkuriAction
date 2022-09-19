@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
                     this.transform.position += new Vector3(MoveStep, 0, 0);
                     break;
                 case KeyCode.Space:
-                    if (checkGrounded())
+                    if (isHit(Vector2.down))
                     {
                         _jumpCounter = 2;
                     }
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
             }
 
             // 落下
-            if (!checkGrounded() && _jumpCounter == 0)
+            if (!isHit(Vector2.down) && _jumpCounter == 0)
             {
                 this.transform.position += new Vector3(0, -MoveStep, 0);
             }
@@ -66,9 +66,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    bool checkGrounded()
+    bool isHit(Vector2 direction)
     {
-        var result = Physics2D.CircleCast((Vector2)this.transform.position + Vector2.down, MoveStep / 2.5f, Vector2.down, 0);
+        var result = Physics2D.CircleCast((Vector2)this.transform.position + direction, MoveStep / 2.5f, direction, 0);
 
         return (bool)result;
     }
