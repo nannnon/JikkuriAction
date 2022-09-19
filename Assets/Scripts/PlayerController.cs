@@ -36,7 +36,6 @@ public class PlayerController : MonoBehaviour
 
         if (keyUp)
         {
-            bool isGrounded = checkGrounded();
             switch (upKey)
             {
                 case KeyCode.LeftArrow:
@@ -46,7 +45,7 @@ public class PlayerController : MonoBehaviour
                     this.transform.position += new Vector3(MoveStep, 0, 0);
                     break;
                 case KeyCode.Space:
-                    if (isGrounded)
+                    if (checkGrounded())
                     {
                         _jumpCounter = 2;
                     }
@@ -54,8 +53,7 @@ public class PlayerController : MonoBehaviour
             }
 
             // 落下
-            isGrounded = checkGrounded();
-            if (!isGrounded && _jumpCounter == 0)
+            if (!checkGrounded() && _jumpCounter == 0)
             {
                 this.transform.position += new Vector3(0, -MoveStep, 0);
             }
