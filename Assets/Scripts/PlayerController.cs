@@ -39,10 +39,16 @@ public class PlayerController : MonoBehaviour
             switch (upKey)
             {
                 case KeyCode.LeftArrow:
-                    this.transform.position += new Vector3(-MoveStep, 0, 0);
+                    if (!isHit(Vector2.left))
+                    {
+                        this.transform.position += new Vector3(-MoveStep, 0, 0);
+                    }
                     break;
                 case KeyCode.RightArrow:
-                    this.transform.position += new Vector3(MoveStep, 0, 0);
+                    if (!isHit(Vector2.right))
+                    {
+                        this.transform.position += new Vector3(MoveStep, 0, 0);
+                    }
                     break;
                 case KeyCode.Space:
                     if (isHit(Vector2.down))
@@ -60,8 +66,15 @@ public class PlayerController : MonoBehaviour
 
             if (_jumpCounter > 0)
             {
-                this.transform.position += new Vector3(0, MoveStep, 0);
-                --_jumpCounter;
+                if (isHit(Vector2.up))
+                {
+                    _jumpCounter = 0;
+                }
+                else
+                {
+                    this.transform.position += new Vector3(0, MoveStep, 0);
+                    --_jumpCounter;
+                }
             }
         }
     }
