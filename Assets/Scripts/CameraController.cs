@@ -14,6 +14,7 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
+        // 特定のエリア外にプレイヤーが出たら、追従するようにする
         const int FreeAreaWidth = 7;
         const int FreeAreaHeight = 5;
 

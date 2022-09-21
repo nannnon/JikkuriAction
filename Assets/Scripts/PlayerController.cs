@@ -38,18 +38,21 @@ public class PlayerController : MonoBehaviour
         {
             switch (upKey)
             {
+                // 左へ移動
                 case KeyCode.LeftArrow:
                     if (!isHit(Vector2.left))
                     {
                         this.transform.position += new Vector3(-MoveStep, 0, 0);
                     }
                     break;
+                // 右へ移動
                 case KeyCode.RightArrow:
                     if (!isHit(Vector2.right))
                     {
                         this.transform.position += new Vector3(MoveStep, 0, 0);
                     }
                     break;
+                // ジャンプ
                 case KeyCode.Space:
                     if (isHit(Vector2.down))
                     {
@@ -66,11 +69,12 @@ public class PlayerController : MonoBehaviour
 
             if (_jumpCounter > 0)
             {
+                // 頭がぶつかったらジャンプ終了
                 if (isHit(Vector2.up))
                 {
                     _jumpCounter = 0;
                 }
-                else
+                else // ジャンプ
                 {
                     this.transform.position += new Vector3(0, MoveStep, 0);
                     --_jumpCounter;
