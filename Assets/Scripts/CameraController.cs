@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField]
     GameObject _followTarget;
 
     // Start is called before the first frame update
     void Start()
     {
+        _followTarget = GameObject.FindGameObjectWithTag("Player");
     }
 
     void LateUpdate()
