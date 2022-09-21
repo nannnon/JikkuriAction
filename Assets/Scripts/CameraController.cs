@@ -15,7 +15,7 @@ public class CameraController : MonoBehaviour
     void LateUpdate()
     {
         const int FreeAreaWidth = 7;
-        const int FreeAreaHeight = 7;
+        const int FreeAreaHeight = 5;
 
         float diffX = _followTarget.transform.position.x - transform.position.x;
         float diffY = _followTarget.transform.position.y - transform.position.y;
