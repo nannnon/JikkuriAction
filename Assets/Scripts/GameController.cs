@@ -5,13 +5,16 @@ using UnityEngine;
 enum GameState
 {
     Main,
-    GameOver
+    GameOver,
+    GameClear
 }
 
 public class GameController : MonoBehaviour
 {
     [SerializeField]
     GameObject _gameOverUI;
+    [SerializeField]
+    GameObject _gameClearUI;
 
     GameState _gameState;
     GameObject _player;
@@ -32,8 +35,7 @@ public class GameController : MonoBehaviour
             const int DeadHeight = -10;
             if (_player.transform.position.y < DeadHeight)
             {
-                _gameOverUI.SetActive(true);
-                _gameState = GameState.GameOver;
+                GameOver();
             }
         }
     }
@@ -42,5 +44,17 @@ public class GameController : MonoBehaviour
     {
         var activeSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         UnityEngine.SceneManagement.SceneManager.LoadScene(activeSceneName);
+    }
+
+    public void GameOver()
+    {
+        _gameOverUI.SetActive(true);
+        _gameState = GameState.GameOver;
+    }
+
+    public void GameClear()
+    {
+        _gameClearUI.SetActive(true);
+        _gameState = GameState.GameClear;
     }
 }

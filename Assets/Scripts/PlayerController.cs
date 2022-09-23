@@ -7,10 +7,12 @@ public class PlayerController : MonoBehaviour
     const float MoveStep = 1f;
 
     int _jumpCounter = 0;
+    GameController _gameController;
 
     // Start is called before the first frame update
     void Start()
     {
+        _gameController = GameObject.Find("GameController").GetComponent<GameController>();
     }
 
     // Update is called once per frame
@@ -85,8 +87,17 @@ public class PlayerController : MonoBehaviour
 
     bool isHit(Vector2 direction)
     {
-        var result = Physics2D.CircleCast((Vector2)this.transform.position + direction, MoveStep / 2.5f, direction, 0);
+        const int layerMask = 1 << 6; // Levelのみ衝突
+        var result = Physics2D.CircleCast((Vector2)this.transform.position + direction, MoveStep / 2.5f, direction, 0, layerMask);
 
         return (bool)result;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Goal")
+        {
+            _gameController.GameClear();
+        }
     }
 }
