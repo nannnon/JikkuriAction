@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : DiscretelyMover
 {
-    const float MoveStep = 1f;
-
     int _jumpCounter = 0;
     GameController _gameController;
 
@@ -44,14 +42,14 @@ public class PlayerController : MonoBehaviour
                 case KeyCode.LeftArrow:
                     if (!isHit(Vector2.left))
                     {
-                        this.transform.position += new Vector3(-MoveStep, 0, 0);
+                        Move(Direction.Left);
                     }
                     break;
                 // 右へ移動
                 case KeyCode.RightArrow:
                     if (!isHit(Vector2.right))
                     {
-                        this.transform.position += new Vector3(MoveStep, 0, 0);
+                        Move(Direction.Right);
                     }
                     break;
                 // ジャンプ
@@ -66,7 +64,7 @@ public class PlayerController : MonoBehaviour
             // 落下
             if (!isHit(Vector2.down) && _jumpCounter == 0)
             {
-                this.transform.position += new Vector3(0, -MoveStep, 0);
+                Move(Direction.Down);
             }
 
             if (_jumpCounter > 0)
@@ -78,19 +76,11 @@ public class PlayerController : MonoBehaviour
                 }
                 else // ジャンプ
                 {
-                    this.transform.position += new Vector3(0, MoveStep, 0);
+                    Move(Direction.Up);
                     --_jumpCounter;
                 }
             }
         }
-    }
-
-    bool isHit(Vector2 direction)
-    {
-        const int layerMask = 1 << 6; // Levelのみ衝突
-        var result = Physics2D.CircleCast((Vector2)this.transform.position + direction, MoveStep / 2.5f, direction, 0, layerMask);
-
-        return (bool)result;
     }
 
     void OnTriggerEnter2D(Collider2D other)
