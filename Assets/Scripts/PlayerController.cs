@@ -99,5 +99,9 @@ public class PlayerController : DiscretelyMover
         {
             _gameController.GameClear();
         }
+        else if (other.gameObject.tag == "Enemy")
+        {
+            _gameController.GameOver();
+        }
     }
 }
