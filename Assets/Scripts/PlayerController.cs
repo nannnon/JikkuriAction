@@ -80,6 +80,9 @@ public class PlayerController : DiscretelyMover
                     --_jumpCounter;
                 }
             }
+
+            // 敵を一斉に動かす
+            _gameController.MoveAllEnemies();
         }
     }
 
