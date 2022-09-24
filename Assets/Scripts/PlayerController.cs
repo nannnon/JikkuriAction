@@ -65,6 +65,13 @@ public class PlayerController : DiscretelyMover
             if (!isHit(Vector2.down) && _jumpCounter == 0)
             {
                 Move(Direction.Down);
+
+                // 一定以上落下したらゲームオーバー
+                const int DeadHeight = -10;
+                if (transform.position.y < DeadHeight)
+                {
+                    _gameController.GameOver();
+                }
             }
 
             if (_jumpCounter > 0)

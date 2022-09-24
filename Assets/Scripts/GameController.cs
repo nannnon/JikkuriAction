@@ -37,15 +37,6 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_gameState == GameState.Main)
-        {
-            // プレイヤーが一定以上落下したらゲームオーバー
-            const int DeadHeight = -10;
-            if (_player.transform.position.y < DeadHeight)
-            {
-                GameOver();
-            }
-        }
     }
 
     public void LoadCurrentScene()
