@@ -49,6 +49,7 @@ public class GameController : MonoBehaviour
     {
         if (_gameState == GameState.Main)
         {
+            _player.SetActive(false);
             _gameOverUI.SetActive(true);
             _gameState = GameState.GameOver;
         }
@@ -58,6 +59,7 @@ public class GameController : MonoBehaviour
     {
         if (_gameState == GameState.Main)
         {
+            _player.SetActive(false);
             _gameClearUI.SetActive(true);
             _gameState = GameState.GameClear;
         }
