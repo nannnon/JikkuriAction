@@ -33,6 +33,9 @@ public abstract class DiscretelyMover : MonoBehaviour
             case Direction.Down:
                 this.transform.position += new Vector3(0, -MoveStep, 0);
                 break;
+            
+            default:
+                throw new System.Exception("Unknown dir");
         }
     }
 
