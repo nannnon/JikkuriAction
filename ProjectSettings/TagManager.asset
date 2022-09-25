@@ -49,6 +49,9 @@ TagManager:
   - name: Level
     uniqueID: 3602949427
     locked: 0
+  - name: Hint
+    uniqueID: 1137714013
+    locked: 0
   - name: Goal
     uniqueID: 4029249517
     locked: 0
