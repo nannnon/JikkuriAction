@@ -6,11 +6,15 @@ public class PlayerController : DiscretelyMover
 {
     int _jumpCounter = 0;
     GameController _gameController;
+    [SerializeField]
+    AudioClip _audioClip;
+    AudioSource _audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         _gameController = GameObject.Find("GameController").GetComponent<GameController>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -87,6 +91,9 @@ public class PlayerController : DiscretelyMover
                     --_jumpCounter;
                 }
             }
+
+            // 音を鳴らす
+            _audioSource.PlayOneShot(_audioClip);
 
             // 敵を一斉に動かす
             _gameController.MoveAllEnemies();
