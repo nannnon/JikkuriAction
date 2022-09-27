@@ -4753,6 +4753,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameOverUI: {fileID: 2127292462}
   _gameClearUI: {fileID: 1247480229}
+  _nextSceneName: Stage2
 --- !u!4 &807873599
 Transform:
   m_ObjectHideFlags: 0
@@ -5224,7 +5225,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 807873598}
         m_TargetAssemblyTypeName: GameController, Assembly-CSharp
-        m_MethodName: LoadCurrentScene
+        m_MethodName: LoadNextScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

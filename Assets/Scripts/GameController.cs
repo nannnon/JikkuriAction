@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour
     GameObject _gameOverUI;
     [SerializeField]
     GameObject _gameClearUI;
+    [SerializeField]
+    string _nextSceneName;
 
     enum GameState
     {
@@ -43,6 +45,11 @@ public class GameController : MonoBehaviour
     {
         var activeSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         UnityEngine.SceneManagement.SceneManager.LoadScene(activeSceneName);
+    }
+    
+    public void LoadNextScene()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(_nextSceneName);
     }
 
     public void GameOver()
