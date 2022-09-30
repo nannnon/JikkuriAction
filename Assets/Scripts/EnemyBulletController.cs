@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyGunController : Enemy
+public class EnemyBulletController : Enemy
 {
-    [SerializeField]
-    GameObject _bulletPrefab;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +16,5 @@ public class EnemyGunController : Enemy
         
     }
     public override void MoveEnemy()
-    {
-
-    }
+    {}
 }
