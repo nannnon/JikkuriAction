@@ -92,7 +92,7 @@ public class EnemyGunController : Enemy
                 Move(Direction.Down);
             }
 
-            if (_counter % 3 == 0)
+            if (_counter % 5 == 0)
             {
                 ShootBullet(new Vector3(-2 * MoveStep, MoveStep, 0));
                 ShootBullet(new Vector3(-2 * MoveStep, 0, 0));
