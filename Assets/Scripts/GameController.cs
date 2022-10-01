@@ -74,9 +74,20 @@ public class GameController : MonoBehaviour
 
     public void MoveAllEnemies()
     {
-        foreach (Enemy enemy in _enemies)
+        for (int i = _enemies.Count - 1; i >= 0; --i)
         {
-            enemy.MoveEnemy();
+            _enemies[i].MoveEnemy();
         }
     }
+
+    public void AddEnemy(Enemy enemy)
+    {
+        _enemies.Add(enemy);
+    }
+
+    public void RemoveEnemy(Enemy enemy)
+    {
+        _enemies.Remove(enemy);
+    }
+
 }
